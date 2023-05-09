@@ -67,6 +67,16 @@ public class RadioTest {
     }
 
     @Test
+    public void increaseVolume3() {
+        Radio tun = new Radio();
+        tun.setVolume(101);
+        tun.increaseVolume();
+        int expected = 1;
+        int actual = tun.getVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void decreaseVolume1() {
         Radio tun = new Radio();
         tun.setVolume(100);
@@ -80,6 +90,16 @@ public class RadioTest {
     public void decreaseVolume2() {
         Radio tun = new Radio();
         tun.setVolume(0);
+        tun.decreaseVolume();
+        int expected = 0;
+        int actual = tun.getVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void decreaseVolume3() {
+        Radio tun = new Radio();
+        tun.setVolume(-1);
         tun.decreaseVolume();
         int expected = 0;
         int actual = tun.getVolume();
