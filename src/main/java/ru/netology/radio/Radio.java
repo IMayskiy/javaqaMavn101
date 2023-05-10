@@ -2,7 +2,7 @@ package ru.netology.radio;
 
 public class Radio {
     private int volume;
-    public int station;
+    private int station;
 
     public int getVolume() {
         return volume;
