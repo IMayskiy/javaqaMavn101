@@ -13,6 +13,31 @@ public class RadioTest {
     }
 
     @Test
+    public void setStation1() {
+        tun.setCurrentStation(-1);
+        int expected = 0;
+        int actual = tun.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setStation2() {
+        tun.setCurrentStation(11);
+        int expected = 0;
+        int actual = tun.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setStation3() {
+        tun.setCurrentStation(5);
+        tun.setCurrentStation(0);
+        int expected = 0;
+        int actual = tun.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void nextStation1() {
         tun.setCurrentStation(9);
         tun.nextStation();
@@ -103,5 +128,12 @@ public class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void setQuantityStation() {
+        tun.setQuantityStation(20);
+        int expected = 20;
+        int actual = tun.getQuantityStation();
+        Assertions.assertEquals(expected, actual);
+    }
 
 }
