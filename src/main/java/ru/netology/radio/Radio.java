@@ -1,22 +1,20 @@
 package ru.netology.radio;
 
 public class Radio {
-    private int quantityStation = 10;
-    private int minStation = 0;
-    private int maxStation = quantityStation - 1;
-    private int currentStation = minStation;
+    private int currentStation;
+    private int maxStation;
 
-    private int minVolume = 0;
+    private int currentVolume;
     private int maxVolume = 100;
-    private int currentVolume = minVolume;
+    private int minVolume = 0;
 
 
     public Radio() {
+        maxStation = 9;
     }
 
     public Radio(int quantityStation) {
-        this.quantityStation = quantityStation;
-        this.currentStation = minStation;
+        maxStation = quantityStation - 1;
     }
 
 
@@ -27,8 +25,9 @@ public class Radio {
             currentStation = 0;
         }
     }
+
     public void prevStation() {
-        if (currentStation != minStation) {
+        if (currentStation != 0) {
             currentStation--;
         } else {
             currentStation = maxStation;
@@ -42,6 +41,7 @@ public class Radio {
             currentVolume = maxVolume;
         }
     }
+
     public void decreaseVolume() {
         if (currentVolume != minVolume) {
             setCurrentVolume(currentVolume - 1);
@@ -54,14 +54,14 @@ public class Radio {
         return currentStation;
     }
 
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < minStation) {
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
             return;
         }
-        if (newCurrentStation > maxStation) {
+        if (currentStation > maxStation) {
             return;
         }
-        this.currentStation = newCurrentStation;
+        this.currentStation = currentStation;
     }
 
     public int getCurrentVolume() {
@@ -73,17 +73,9 @@ public class Radio {
             return;
         }
         if (newCurrentVolume > maxVolume) {
-            return;
+            newCurrentVolume = maxVolume;
         }
         this.currentVolume = newCurrentVolume;
     }
 
-
-    public int getQuantityStation() {
-        return quantityStation;
-    }
-
-    public void setQuantityStation (int newQuantityStation) {
-        this.quantityStation = newQuantityStation;
-    }
 }

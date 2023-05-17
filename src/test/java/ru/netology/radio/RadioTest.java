@@ -4,25 +4,38 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
-    Radio tun = new Radio();
 
     @Test
-    public void quantityStation() {
+    public void setQuantityStation1() {
         Radio tun = new Radio(20);
-        Assertions.assertEquals(20, tun.getQuantityStation());
+        tun.setCurrentStation(15);
+        int expected = 15;
+        int actual = tun.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void setStation1() {
-        tun.setCurrentStation(-1);
+    public void setQuantityStation2() {
+        Radio tun = new Radio(20);
+        tun.setCurrentStation(0);
         int expected = 0;
         int actual = tun.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
+    public void setStation1() {
+        Radio tun = new Radio();
+        tun.setCurrentStation(8);
+        int expected = 8;
+        int actual = tun.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void setStation2() {
-        tun.setCurrentStation(11);
+        Radio tun = new Radio();
+        tun.setCurrentStation(10);
         int expected = 0;
         int actual = tun.getCurrentStation();
         Assertions.assertEquals(expected, actual);
@@ -30,6 +43,7 @@ public class RadioTest {
 
     @Test
     public void setStation3() {
+        Radio tun = new Radio();
         tun.setCurrentStation(5);
         tun.setCurrentStation(0);
         int expected = 0;
@@ -38,7 +52,17 @@ public class RadioTest {
     }
 
     @Test
+    public void setStation4() {
+        Radio tun = new Radio();
+        tun.setCurrentStation(-4);
+        int expected = 0;
+        int actual = tun.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void nextStation1() {
+        Radio tun = new Radio();
         tun.setCurrentStation(9);
         tun.nextStation();
         int expected = 0;
@@ -48,6 +72,7 @@ public class RadioTest {
 
     @Test
     public void nextStation2() {
+        Radio tun = new Radio();
         tun.setCurrentStation(0);
         tun.nextStation();
         int expected = 1;
@@ -57,6 +82,7 @@ public class RadioTest {
 
     @Test
     public void prevStation1() {
+        Radio tun = new Radio();
         tun.setCurrentStation(9);
         tun.prevStation();
         int expected = 8;
@@ -66,6 +92,7 @@ public class RadioTest {
 
     @Test
     public void prevStation2() {
+        Radio tun = new Radio();
         tun.setCurrentStation(0);
         tun.prevStation();
         int expected = 9;
@@ -76,6 +103,7 @@ public class RadioTest {
     //
     @Test
     public void increaseVolume1() {
+        Radio tun = new Radio();
         tun.setCurrentVolume(0);
         tun.increaseVolume();
         int expected = 1;
@@ -85,6 +113,7 @@ public class RadioTest {
 
     @Test
     public void increaseVolume2() {
+        Radio tun = new Radio();
         tun.setCurrentVolume(100);
         tun.increaseVolume();
         int expected = 100;
@@ -94,15 +123,17 @@ public class RadioTest {
 
     @Test
     public void increaseVolume3() {
+        Radio tun = new Radio();
         tun.setCurrentVolume(101);
         tun.increaseVolume();
-        int expected = 1;
+        int expected = 100;
         int actual = tun.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void decreaseVolume1() {
+        Radio tun = new Radio();
         tun.setCurrentVolume(100);
         tun.decreaseVolume();
         int expected = 99;
@@ -112,6 +143,7 @@ public class RadioTest {
 
     @Test
     public void decreaseVolume2() {
+        Radio tun = new Radio();
         tun.setCurrentVolume(0);
         tun.decreaseVolume();
         int expected = 0;
@@ -121,19 +153,11 @@ public class RadioTest {
 
     @Test
     public void decreaseVolume3() {
+        Radio tun = new Radio();
         tun.setCurrentVolume(-1);
         tun.decreaseVolume();
         int expected = 0;
         int actual = tun.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
-
-    @Test
-    public void setQuantityStation() {
-        tun.setQuantityStation(20);
-        int expected = 20;
-        int actual = tun.getQuantityStation();
-        Assertions.assertEquals(expected, actual);
-    }
-
 }
